@@ -13,3 +13,14 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+  padding-top: 50px;
+}
+
+img.navbar-profile-thumbnail {
+  height: 40px;
+  width: 40px;
+  margin-top: 5px;
+  border-radius: 5px;
+}
