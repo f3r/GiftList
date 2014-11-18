@@ -8,8 +8,7 @@ RSpec.describe "items/show", :type => :view do
       :price => 1.5,
       :description => "MyText",
       :category => "Category",
-      :rating => 1,
-      :list_id => 2
+      :rating => 1
     ))
   end
 
@@ -21,6 +20,5 @@ RSpec.describe "items/show", :type => :view do
     expect(rendered).to match(/MyText/)
     expect(rendered).to match(/Category/)
     expect(rendered).to match(/1/)
-    expect(rendered).to match(/2/)
   end
 end
