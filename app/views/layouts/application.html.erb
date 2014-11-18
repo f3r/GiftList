@@ -22,25 +22,22 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
-          <li id="LoggedIn">
-            <% if user_signed_in? %>
-              <%= current_user.name %>
+          <% if user_signed_in? %>
+            <li id="LoggedIn">
               <%= image_tag current_user.image %>
+              <%= current_user.name %>
             <% end %>
           </li>
-          <li>
-            <a href="#">About</a>
-          </li>
-          <li>
-            <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
-          </li>
+          <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
         </ul>
       </div>
-      <!-- /.navbar-collapse -->
-    </div>
-        <!-- /.container -->
+
+    </div><!-- /.container -->
   </nav>
-<%= yield %>
+
+  <div class="container">
+    <%= yield %>
+  </div>
 
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </body>
