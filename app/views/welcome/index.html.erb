@@ -6,26 +6,29 @@
     <div class="col-md-3">
       <%= image_tag current_user.image, { class: "sidebar-profile-image" } %>
       <%= link_to "Create new wish list", new_list_path, {class: 'btn btn-primary'} %>
-      <% @lists.each do |list| %>
-        <h2><%= list.list_name %></h2>
-        <% list.wanted_items.each do |wanted_item| %>
-          <%= wanted_item.item.name %>
-        <% end %>
-      <% end %>
+
+      <div ng-repeat="wish_list in wish_lists">
+        <h2>{{ wish_list.list_name }}</h2>
+        <div ng-repeat="wanted_item in wish_list.wanted_items">
+          {{ wanted_item.item.name }}
+        </div>
+      </div>
+
     </div>
 
     <div class="col-md-9">
-      <% @items.each do |item| %>
+
+      <div ng-repeat="item in items">
         <div class="col-md-4">
-          <h2><%= item.name %></h2>
-          <h3><%= item.category %></h3>
-          <%= image_tag item.image, {class: "item-display-image"} %>
-          <h3><%= number_to_currency(item.price) %></h3>
+          <h2>{{ item.name }}</h2>
+          <h3>{{ item.category }}</h3>
+          <img src="{{ item.image }}" alt="item image" class="item-display-image">
+          <h3>{{ item.price | currency }}</h3>
           <div class="btn btn-primary btn-block">See More</div>
-          <div class="btn btn-success btn-block">Add to Wish List</div>
+          <div class="btn btn-success btn-block add-to-wish-list" data-itemId="{{ item.id }}">Add to Wish List</div>
         </div>
-      <% end %>
       </div>
+     </div>
   </div>
 
 <% else %>

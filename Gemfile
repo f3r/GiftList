@@ -6,6 +6,7 @@ gem 'rails', '4.1.6'
 
 gem 'pg'
 gem 'rails_12factor'
+gem 'angularjs-rails', '~> 1.3'
 # Use SCSS for stylesheets
 gem 'bootstrap-sass', '~> 3.3.1'
 gem 'autoprefixer-rails'
