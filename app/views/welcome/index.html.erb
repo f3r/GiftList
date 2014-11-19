@@ -1,27 +1,59 @@
 <%= stylesheet_link_tag 'welcome' %>
 
-<div class="intro-header">
+<% if user_signed_in? %>
+
   <div class="row">
-    <div class="col-lg-12">
-      <div class="intro-message">
-        <h1>WishCrowd</h1>
-        <hr class="intro-divider">
-        <h3>Sign up or in with</h3>
-        <hr class="intro-divider">
-        <ul class="list-inline intro-social-buttons">
-          <li>
-            <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
-          </li>
-          <li>
-            <a href="#" class="btn btn-default btn-lg"><i class="fa fa-google-plus fa-fw"></i> <span class="network-name">Google+</span></a>
-          </li>
-          <li>
-            <%= link_to user_omniauth_authorize_path(:facebook), {class: "btn btn-default btn-lg"} do %>
-              <i class='fa fa-facebook fa-fw'></i> <span class='network-name'>Facebook</span>
-            <% end %>
-          </li>
-        </ul>
+    <div class="col-md-3">
+      <%= image_tag current_user.image, { class: "sidebar-profile-image" } %>
+      <%= link_to "Create new wish list", new_list_path, {class: 'btn btn-primary'} %>
+      <% @lists.each do |list| %>
+        <h2><%= list.list_name %></h2>
+        <% list.wanted_items.each do |wanted_item| %>
+          <%= wanted_item.item.name %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="col-md-9">
+      <% @items.each do |item| %>
+        <div class="col-md-4">
+          <h2><%= item.name %></h2>
+          <h3><%= item.category %></h3>
+          <%= image_tag item.image, {class: "item-display-image"} %>
+          <h3><%= number_to_currency(item.price) %></h3>
+          <div class="btn btn-primary btn-block">See More</div>
+          <div class="btn btn-success btn-block">Add to Wish List</div>
+        </div>
+      <% end %>
+      </div>
+  </div>
+
+<% else %>
+
+  <div class="intro-header">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="intro-message">
+          <h1>WishCrowd</h1>
+          <hr class="intro-divider">
+          <h3>Sign up or in with</h3>
+          <hr class="intro-divider">
+          <ul class="list-inline intro-social-buttons">
+            <li>
+              <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
+            </li>
+            <li>
+              <a href="#" class="btn btn-default btn-lg"><i class="fa fa-google-plus fa-fw"></i> <span class="network-name">Google+</span></a>
+            </li>
+            <li>
+              <%= link_to user_omniauth_authorize_path(:facebook), {class: "btn btn-default btn-lg"} do %>
+                <i class='fa fa-facebook fa-fw'></i> <span class='network-name'>Facebook</span>
+              <% end %>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
-</div>
+
+<% end %>
