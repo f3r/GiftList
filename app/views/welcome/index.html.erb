@@ -8,6 +8,9 @@
       <%= link_to "Create new wish list", new_list_path, {class: 'btn btn-primary'} %>
       <% @lists.each do |list| %>
         <h2><%= list.list_name %></h2>
+        <% list.each do |wanted_item| %>
+          <%= wanted_item.name %>
+        <% end %>
       <% end %>
     </div>
 

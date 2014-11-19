@@ -65,6 +65,8 @@ ActiveRecord::Schema.define(version: 20141117114109) do
 
   create_table "wanted_items", force: true do |t|
     t.integer  "user_id"
+    t.integer  "list_id"
+    t.integer  "item_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

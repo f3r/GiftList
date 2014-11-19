@@ -1,4 +1,5 @@
 class WantedItem < ActiveRecord::Base
-  has_many :comments
-  belongs_to :users
+  belongs_to    :lists
+  has_one       :item
+  has_many      :comments
 end
