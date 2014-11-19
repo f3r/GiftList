@@ -1,5 +1,5 @@
 class WantedItem < ActiveRecord::Base
   belongs_to    :lists
-  has_one       :item
+  belongs_to    :item
   has_many      :comments
 end
