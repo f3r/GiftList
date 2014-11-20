@@ -3,11 +3,12 @@ class WantedItemsController < ApplicationController
 
   # POST /api/wanted_items/submit.json
   def submit
-    binding.pry
-    items = WantedItem.find(params[:id])
-    current_user.wanted_items << items
+    item = Item.find(params[:data][:item_id])
+    list = List.find(params[:data][:list_id])
+    @wanted_item = WantedItem.create({user_id: current_user.id, item_id: params[:data][:item_id], list_id: params[:data][:list_id]})
+    list.wanted_items << @wanted_item
     respond_to do |format|
-      if current_user.wanted_items.save
+      if @wanted_item.save
         format.json { render :show, status: :created, location: @wanted_item }
       else
         format.json { render json: @wanted_item.errors, status: :unprocessable_entity }
