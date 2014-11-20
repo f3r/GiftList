@@ -25,7 +25,7 @@
           <img src="{{ item.image }}" alt="item image" class="item-display-image">
           <h3>{{ item.price | currency }}</h3>
           <div class="btn btn-primary btn-block">See More</div>
-          <div class="btn btn-success btn-block add-to-wish-list" data-itemId="{{ item.id }}">Add to Wish List</div>
+          <div class="btn btn-success btn-block add-to-wish-list" ng-click="addItemToWishList(item.id)">Add to Wish List</div>
         </div>
       </div>
      </div>

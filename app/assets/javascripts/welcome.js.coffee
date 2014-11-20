@@ -22,6 +22,21 @@ App.controller("GiftItemController", ["$scope", "$http", ($scope, $http) ->
       .error (data) ->
         console.log "Wish list error"
 
+  $scope.addItemToWishList = (itemId) ->
+    jsonObj = {"data": {"list_id": 1, "item_id": itemId }}
+
+    # Devise requires a CSRF token be included with all requests. The presence of this token
+    # guarantees that the current page was meant to make this request.
+    # See more: http://guides.rubyonrails.org/security.html#cross-site-request-forgery-csrf
+    jsonObj[$('meta[name=csrf-param]').attr('content')] = $('meta[name=csrf-token]').attr('content')
+
+    $http.post('api/wanted_items/submit.json', jsonObj)
+      .success (data) ->
+        console.log data
+        $scope.saved = true
+      .error (data) ->
+        console.log data
+
 
   $scope.loadItems()
   $scope.loadWishList()

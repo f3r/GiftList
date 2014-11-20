@@ -1,6 +1,21 @@
 class WantedItemsController < ApplicationController
   before_action :set_wanted_item, only: [:show, :edit, :update, :destroy]
 
+  # POST /api/wanted_items/submit.json
+  def submit
+    binding.pry
+    items = WantedItem.find(params[:id])
+    current_user.wanted_items << items
+    respond_to do |format|
+      if current_user.wanted_items.save
+        format.json { render :show, status: :created, location: @wanted_item }
+      else
+        format.json { render json: @wanted_item.errors, status: :unprocessable_entity }
+      end
+    end
+
+  end
+
   # GET /wanted_items
   # GET /wanted_items.json
   def index

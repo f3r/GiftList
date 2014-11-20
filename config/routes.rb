@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  scope :api do
+    resources :wanted_items, only: [:index, :show, :create] do
+      post  'submit'  , on: :collection
+      get   'data'    , on: :collection
+    end
+  end
 
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -19,7 +25,6 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   resources :users
   resources :lists
-  resources :wanted_items
   resources :items
   resources :comments
 
