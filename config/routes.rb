@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   end
 
 
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -24,9 +25,13 @@ Rails.application.routes.draw do
   #   resources :products
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   resources :users
-  resources :lists
   resources :items
   resources :comments
+  resources :lists
+  # resources :lists, only: [:index, :show, :create] do
+  #   post  'submit'  , on: :collection
+  #   get   'data'    , on: :collection
+  # end
 
   # Example resource route with options:
   #   resources :products do

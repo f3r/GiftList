@@ -37,6 +37,16 @@ App.controller("GiftItemController", ["$scope", "$http", ($scope, $http) ->
       .error (data) ->
         console.log data
 
+  $scope.addNewWishList = ->
+    jsonObj = {"list_name": $scope.newListName}
+    jsonObj[$('meta[name=csrf-param]').attr('content')] = $('meta[name=csrf-token]').attr('content')
+
+    $http.post('lists.json', jsonObj)
+      .success (data) ->
+        console.log data
+        $scope.loadWishList()
+      .error (data) ->
+        console.log data
 
   $scope.loadItems()
   $scope.loadWishList()

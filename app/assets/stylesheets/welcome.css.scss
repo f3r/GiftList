@@ -6,6 +6,8 @@
  * Code licensed under the Apache License v2.0.
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
+
+
 body {
     background-color:#47515B;
 }
@@ -170,18 +172,86 @@ p.copyright {
     margin: 15px 0 0;
 }
 
-
+/*******   SIDEBAR /
 /********************************************/
 
-img.item-display-image {
-    height: 200px;
-    width: 150px;
+div.side-bar {
+  background-color: #FFFFFF;
+  text-align: center;
 }
 
 img.sidebar-profile-image {
-    height: 200px;
-    width: 200px;
-    border-radius: 100px;
+  height: 200px;
+  width: 200px;
+  border-radius: 100px;
+  margin: 40px 0;
+}
+
+div.wish-list-container {
+  background-color: gray;
+  border-radius: 10px;
+  text-align: left;
+  padding: 10px 20px;
+  padding-bottom: 20px;
+  margin-top: 10px;
+  margin-bottom: 50px;
+}
+
+h2.wish-list-name {
+  margin: 0;
+  padding-top: 10px;
+  text-align: center;
+}
+
+div.item-container {
+
+}
+
+hr.item-divider {
+  margin: 5px 0;
+}
+
+/*******   MAIN SECTION /
+/********************************************/
+
+
+div.product-tile {
+  padding: 8px;
+}
+
+div.inner-tile {
+  padding: 20px;
+  border-radius: 10px;
+  background: #FFFFFF;
+}
+
+h2.product-name {
+  font-size: 24px;
+  margin: 0;
+}
+
+hr.product-name-divider {
+  margin: 5px 0;
+}
+
+p.category-name {
+  background: orange;
+  border-radius: 5px;
+  color: #5d5d5d;
+  display: inline;
+  font-size: 12px;
+  padding: 5px 10px;
+}
+
+div.product-mask {
+  height: 200px;
+  overflow: hidden;
+  margin: 10px auto;
+  text-align: center;
+}
+
+img.item-display-image {
+  height: 200px;
 }
 
 
