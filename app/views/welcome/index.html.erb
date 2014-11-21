@@ -47,7 +47,7 @@
 
     <div class="col-md-9">
 
-      <div ng-repeat="item in items">
+      <div ng-repeat="item in items | filter:searchText">
         <div class="col-md-4 product-tile">
           <div class="inner-tile">
             <h2 class="product-name">{{ item.name }}</h2>

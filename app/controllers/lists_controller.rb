@@ -1,22 +1,6 @@
 class ListsController < ApplicationController
   before_action :set_list, only: [:show, :edit, :update, :destroy]
 
-  # def submit
-  #   binding.pry
-  #   @new_list = List.create({name: params[:list_name], user_id: current_user.id})
-  #   current_user.lists << @new_list
-
-  #   respond_to do |format|
-  #     if @new_list.save
-  #       format.json { render :show, status: :created, location: @new_list }
-  #     else
-  #       format.json { render json: @new_list.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-
-  # end
-
-
   # GET /lists
   # GET /lists.json
   def index
