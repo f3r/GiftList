@@ -9,7 +9,6 @@ App.controller("GiftItemController", ["$scope", "$http", ($scope, $http) ->
   $scope.loadItems = ->
     $http.get("/items.json")
       .success (data) ->
-        # console.log data
         $scope.items = data
       .error (data) ->
         console.log "data.error"
@@ -17,7 +16,6 @@ App.controller("GiftItemController", ["$scope", "$http", ($scope, $http) ->
   $scope.loadWishList = ->
     $http.get("/lists.json")
       .success (data) ->
-        console.log data
         $scope.wish_lists = data
       .error (data) ->
         console.log "Wish list error"
@@ -32,10 +30,9 @@ App.controller("GiftItemController", ["$scope", "$http", ($scope, $http) ->
 
     $http.post('api/wanted_items/submit.json', jsonObj)
       .success (data) ->
-        console.log data
         $scope.loadWishList()
       .error (data) ->
-        console.log data
+        console.log "data error"
 
   $scope.addNewWishList = ->
     jsonObj = {"list_name": $scope.newListName}
@@ -43,10 +40,9 @@ App.controller("GiftItemController", ["$scope", "$http", ($scope, $http) ->
 
     $http.post('lists.json', jsonObj)
       .success (data) ->
-        console.log data
         $scope.loadWishList()
       .error (data) ->
-        console.log data
+        console.log "data error"
 
   $scope.loadItems()
   $scope.loadWishList()
